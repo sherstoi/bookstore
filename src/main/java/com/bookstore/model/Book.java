@@ -1,6 +1,9 @@
 package com.bookstore.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
@@ -9,31 +12,32 @@ import java.util.Objects;
  * Created by iurii on 9/13/17.
  */
 @Entity
-@Table(name = "Book")
-public class Book {
+@Table(name = "book")
+public class Book implements Serializable {
     @Id
-    @Column(name = "ISBN", nullable = false)
-    private String ISBN;
-    @Column(name = "Title", nullable = false)
+    @Column(name = "isbn", nullable = false)
+    private String isbn;
+    @Column(name = "title", nullable = false)
     private String title;
-    @Column(name = "Description")
+    @Column(name = "description")
     private String description;
-    @Column(name = "DateOfPublication")
+    @Column(name = "date_of_publication")
     private Date pubDate;
-    @Column(name = "ImageURL")
+    @Column(name = "image_url")
     private String imageURL;
-    @Column(name = "Price")
+    @Column(name = "price")
     private BigDecimal price;
-    @ManyToOne
-    @JoinColumn(name = "AuthorID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "author_id")
+    @JsonManagedReference
     private Author author;
 
-    public String getISBN() {
-        return ISBN;
+    public String getIsbn() {
+        return isbn;
     }
 
-    public void setISBN(String ISBN) {
-        this.ISBN = ISBN;
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
     public String getTitle() {
@@ -76,20 +80,24 @@ public class Book {
         this.price = price;
     }
 
-    public Author getAuthor() { return author; }
+    public Author getAuthor() {
+        return author;
+    }
 
-    public void setAuthor(Author author) { this.author = author; }
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || !(o instanceof Book)) return false;
         Book book = (Book) o;
-        return Objects.equals(ISBN, book.ISBN);
+        return Objects.equals(isbn, book.isbn);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ISBN);
+        return Objects.hash(isbn);
     }
 }
