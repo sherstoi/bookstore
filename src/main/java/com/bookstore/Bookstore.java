@@ -24,6 +24,7 @@ import java.text.SimpleDateFormat;
 public class Bookstore extends Application<BookstoreConfig> {
     private static final String SERVER = "server";
     private static final String APPLICATION_PROP = "application.yaml";
+    private static final String DATE_FORMAT = "yyyy-MM-dd";
 
     private final HibernateBundle<BookstoreConfig> hibernateBundle = new HibernateBundle<BookstoreConfig>(Author.class, Book.class) {
         @Override
@@ -45,7 +46,7 @@ public class Bookstore extends Application<BookstoreConfig> {
     public void run(BookstoreConfig bookstoreConfig, Environment environment) {
         AuthorDAO authorDAO = new AuthorDAO(hibernateBundle.getSessionFactory());
         BookDAO bookDAO = new BookDAO(hibernateBundle.getSessionFactory());
-        //environment.getObjectMapper().setDateFormat(new SimpleDateFormat("YYYY-MM-DD"));
+        environment.getObjectMapper().setDateFormat(new SimpleDateFormat(DATE_FORMAT));
         environment.jersey().register(new AuthorRest(new AuthorService(authorDAO)));
         environment.jersey().register(new BookRest(new BookService(bookDAO)));
     }

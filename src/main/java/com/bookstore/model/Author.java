@@ -1,6 +1,6 @@
 package com.bookstore.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -21,7 +21,7 @@ public class Author implements Serializable {
     @Column(name = "name")
     private String name;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "author")
-    @JsonBackReference
+    @JsonManagedReference
     private Set<Book> bookSet = new HashSet<>();
 
     public Integer getId() {

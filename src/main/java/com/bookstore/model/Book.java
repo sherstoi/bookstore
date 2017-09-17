@@ -1,6 +1,6 @@
 package com.bookstore.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -29,7 +29,7 @@ public class Book implements Serializable {
     private BigDecimal price;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id")
-    @JsonManagedReference
+    @JsonBackReference
     private Author author;
 
     public String getIsbn() {
