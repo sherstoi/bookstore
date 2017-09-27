@@ -3,6 +3,7 @@ package com.bookstore.service;
 import com.bookstore.dao.AuthorDAO;
 import com.bookstore.model.Author;
 
+import javax.inject.Inject;
 import java.util.List;
 
 /**
@@ -11,6 +12,7 @@ import java.util.List;
 public class AuthorService {
     private AuthorDAO authorDAO;
 
+    @Inject
     public AuthorService(AuthorDAO authorDAO) {
         this.authorDAO = authorDAO;
     }

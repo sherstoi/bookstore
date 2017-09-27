@@ -1,15 +1,9 @@
 package com.bookstore;
 
 import com.bookstore.config.BookstoreConfig;
-import com.bookstore.dao.AuthorDAO;
-import com.bookstore.dao.BookDAO;
+import com.bookstore.config.di_modules.DaoModule;
 import com.bookstore.model.Author;
 import com.bookstore.model.Book;
-import com.bookstore.rest.AuthorRest;
-import com.bookstore.rest.BookRest;
-import com.bookstore.service.AuthorService;
-import com.bookstore.service.BookService;
-import com.fasterxml.jackson.databind.util.StdDateFormat;
 import io.dropwizard.Application;
 import io.dropwizard.db.PooledDataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
@@ -44,10 +38,10 @@ public class Bookstore extends Application<BookstoreConfig> {
 
     @Override
     public void run(BookstoreConfig bookstoreConfig, Environment environment) {
-        AuthorDAO authorDAO = new AuthorDAO(hibernateBundle.getSessionFactory());
-        BookDAO bookDAO = new BookDAO(hibernateBundle.getSessionFactory());
+        BookstoreComponent bookstoreComponent = DaggerBookstoreComponent.builder()
+                .daoModule(new DaoModule(hibernateBundle.getSessionFactory())).build();
         environment.getObjectMapper().setDateFormat(new SimpleDateFormat(DATE_FORMAT));
-        environment.jersey().register(new AuthorRest(new AuthorService(authorDAO)));
-        environment.jersey().register(new BookRest(new BookService(bookDAO)));
+        environment.jersey().register(bookstoreComponent.getAuthorRest());
+        environment.jersey().register(bookstoreComponent.getBookRest());
     }
 }

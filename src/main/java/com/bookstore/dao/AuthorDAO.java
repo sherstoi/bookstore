@@ -1,10 +1,12 @@
 package com.bookstore.dao;
 
 import com.bookstore.model.Author;
+import dagger.Provides;
 import io.dropwizard.hibernate.AbstractDAO;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
+import javax.inject.Inject;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -15,6 +17,7 @@ import java.util.List;
  */
 @SuppressWarnings("unchecked")
 public class AuthorDAO extends AbstractDAO<Author> {
+
     public AuthorDAO(SessionFactory sessionFactory) {
         super(sessionFactory);
     }
@@ -43,4 +46,6 @@ public class AuthorDAO extends AbstractDAO<Author> {
     public void deleteAuthor(Author author) {
         currentSession().delete(author);
     }
+
+
 }

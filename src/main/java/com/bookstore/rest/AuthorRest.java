@@ -4,6 +4,7 @@ import com.bookstore.model.Author;
 import com.bookstore.service.AuthorService;
 import io.dropwizard.hibernate.UnitOfWork;
 
+import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.GenericEntity;
@@ -18,8 +19,10 @@ import java.util.List;
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class AuthorRest {
+
     private AuthorService authorService;
 
+    @Inject
     public AuthorRest(AuthorService authorService) {
         this.authorService = authorService;
     }
