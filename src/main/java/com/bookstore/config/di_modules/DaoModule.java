@@ -40,28 +40,4 @@ public class DaoModule {
     AuthorDAO provideAuthorDAO(SessionFactory sessionFactory) {
         return new AuthorDAO(sessionFactory);
     }
-
-    @Singleton
-    @Provides
-    AuthorService provideAuthorService(AuthorDAO authorDAO) {
-        return new AuthorService(authorDAO);
-    }
-
-    @Singleton
-    @Provides
-    AuthorRest provideAuthorRest(AuthorService authorService) {
-        return new AuthorRest(authorService);
-    }
-
-    @Singleton
-    @Provides
-    BookService provideBookService(BookDAO bookDAO) {
-        return new BookService(bookDAO);
-    }
-
-    @Singleton
-    @Provides
-    BookRest provideBookRest(BookService bookService) {
-        return new BookRest(bookService);
-    }
 }
