@@ -4,6 +4,7 @@ import com.bookstore.model.Book;
 import com.bookstore.service.BookService;
 import io.dropwizard.hibernate.UnitOfWork;
 
+import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.GenericEntity;
@@ -20,6 +21,7 @@ import java.util.List;
 public class BookRest {
     private BookService bookService;
 
+    @Inject
     public BookRest(BookService bookService) {
         this.bookService = bookService;
     }
