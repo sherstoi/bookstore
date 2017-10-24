@@ -4,6 +4,7 @@ import com.bookstore.dao.AuthorDAO;
 import com.bookstore.dao.BookDAO;
 import com.bookstore.service.AuthorService;
 import com.bookstore.service.BookService;
+import com.bookstore.service.LoginService;
 import dagger.Module;
 import dagger.Provides;
 
@@ -25,4 +26,8 @@ public class ServiceModule {
     AuthorService provideAuthorService(AuthorDAO authorDAO) {
         return new AuthorService(authorDAO);
     }
+
+    @Singleton
+    @Provides
+    LoginService provideLoginService() { return new LoginService(); }
 }

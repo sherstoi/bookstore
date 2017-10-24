@@ -3,6 +3,7 @@ package com.bookstore.service;
 import com.bookstore.dao.BookDAO;
 import com.bookstore.model.Book;
 
+import javax.annotation.security.PermitAll;
 import javax.inject.Inject;
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class BookService {
         return bookDAO.findBookByTitle(title);
     }
 
+    @PermitAll
     public List<Book> findAllBooks() {
         return bookDAO.findAllBooks();
     }
