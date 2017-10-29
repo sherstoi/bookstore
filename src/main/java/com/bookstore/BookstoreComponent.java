@@ -6,6 +6,7 @@ import com.bookstore.config.di_modules.ServiceModule;
 import com.bookstore.config.di_modules.ViewModule;
 import com.bookstore.rest.AuthorRest;
 import com.bookstore.rest.BookRest;
+import com.bookstore.rest.LoginRest;
 import com.bookstore.rest.ViewRest;
 import com.bookstore.service.AuthorService;
 import com.bookstore.service.BookService;
@@ -30,4 +31,5 @@ public interface BookstoreComponent {
     AuthorRest getAuthorRest();
     BookRest getBookRest();
     ViewRest getViewRest();
+    LoginRest getLoginRest();
 }

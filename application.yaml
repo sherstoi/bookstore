@@ -5,7 +5,7 @@ database:
   # the username
   user: bookstore
 
-  # the password
+  # the pss
   password: bookstore
 
   # the JDBC URL

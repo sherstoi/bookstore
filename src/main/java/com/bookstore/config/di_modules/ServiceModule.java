@@ -2,6 +2,7 @@ package com.bookstore.config.di_modules;
 
 import com.bookstore.dao.AuthorDAO;
 import com.bookstore.dao.BookDAO;
+import com.bookstore.dao.LoginDAO;
 import com.bookstore.service.AuthorService;
 import com.bookstore.service.BookService;
 import com.bookstore.service.LoginService;
@@ -29,5 +30,5 @@ public class ServiceModule {
 
     @Singleton
     @Provides
-    LoginService provideLoginService() { return new LoginService(); }
+    LoginService provideLoginService(LoginDAO loginDAO) { return new LoginService(loginDAO); }
 }

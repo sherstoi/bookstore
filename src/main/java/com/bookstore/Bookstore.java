@@ -54,6 +54,7 @@ public class Bookstore extends Application<BookstoreConfig> {
         environment.jersey().register(bookstoreComponent.getAuthorRest());
         environment.jersey().register(bookstoreComponent.getBookRest());
         environment.jersey().register(bookstoreComponent.getViewRest());
+        environment.jersey().register(bookstoreComponent.getLoginRest());
         corsBuilder(environment);
 
         //TODO move below to dagger componenet

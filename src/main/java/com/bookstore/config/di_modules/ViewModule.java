@@ -1,7 +1,6 @@
 package com.bookstore.config.di_modules;
 
 import com.bookstore.service.BookService;
-import com.bookstore.service.LoginService;
 import com.bookstore.view.BookView;
 import com.bookstore.view.LoginView;
 import dagger.Module;
@@ -20,5 +19,5 @@ public class ViewModule {
 
     @Singleton
     @Provides
-    LoginView provideLoginView(LoginService loginService) { return new LoginView(loginService); }
+    LoginView provideLoginView() { return new LoginView(); }
 }

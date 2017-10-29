@@ -2,7 +2,6 @@ package com.bookstore.dao;
 
 import com.bookstore.model.Book;
 import io.dropwizard.hibernate.AbstractDAO;
-import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
