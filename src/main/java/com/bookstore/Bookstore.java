@@ -5,6 +5,7 @@ import com.bookstore.config.di_modules.DaoModule;
 import com.bookstore.filter.CustomAuthFilter;
 import com.bookstore.model.Author;
 import com.bookstore.model.Book;
+import com.bookstore.model.Usrlog;
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.auth.AuthDynamicFeature;
@@ -28,7 +29,7 @@ public class Bookstore extends Application<BookstoreConfig> {
     private static final String APPLICATION_PROP = "application.yaml";
     private static final String DATE_FORMAT = "yyyy-MM-dd";
 
-    private final HibernateBundle<BookstoreConfig> hibernateBundle = new HibernateBundle<BookstoreConfig>(Author.class, Book.class) {
+    private final HibernateBundle<BookstoreConfig> hibernateBundle = new HibernateBundle<BookstoreConfig>(Author.class, Book.class, Usrlog.class) {
         @Override
         public PooledDataSourceFactory getDataSourceFactory(BookstoreConfig configuration) {
             return configuration.getDataSourceFactory();
