@@ -4,6 +4,7 @@ import com.bookstore.model.Book;
 import com.bookstore.service.BookService;
 import io.dropwizard.hibernate.UnitOfWork;
 
+import javax.annotation.security.PermitAll;
 import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.ws.rs.*;
@@ -28,6 +29,7 @@ public class BookRest {
 
     @POST
     @UnitOfWork
+    @PermitAll
     public Response save(Book book) {
         Book persistBook = bookService.saveBook(book);
         return Response.status(Response.Status.CREATED).entity(persistBook).build();
@@ -61,6 +63,7 @@ public class BookRest {
     @DELETE
     @Path("/{isbn}")
     @UnitOfWork
+    @PermitAll
     public Response deleteBook(@PathParam("isbn") String isbn) {
         Book book = bookService.findBookByIsbn(isbn);
         if (book != null) {

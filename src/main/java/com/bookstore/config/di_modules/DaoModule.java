@@ -2,10 +2,7 @@ package com.bookstore.config.di_modules;
 
 import com.bookstore.dao.AuthorDAO;
 import com.bookstore.dao.BookDAO;
-import com.bookstore.rest.AuthorRest;
-import com.bookstore.rest.BookRest;
-import com.bookstore.service.AuthorService;
-import com.bookstore.service.BookService;
+import com.bookstore.dao.LoginDAO;
 import dagger.Module;
 import dagger.Provides;
 import org.hibernate.SessionFactory;
@@ -40,4 +37,8 @@ public class DaoModule {
     AuthorDAO provideAuthorDAO(SessionFactory sessionFactory) {
         return new AuthorDAO(sessionFactory);
     }
+
+    @Singleton
+    @Provides
+    LoginDAO provideLoginDAO(SessionFactory sessionFactory) { return new LoginDAO(sessionFactory); }
 }

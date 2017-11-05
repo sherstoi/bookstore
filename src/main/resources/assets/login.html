@@ -1,0 +1,19 @@
+<div id="app">
+    <b-switch v-model="switchState">{{ switchState }}</b-switch>
+    <hr>
+
+    <b-checkbox v-model="checkboxState">{{ checkboxState }}</b-checkbox>
+    <hr>
+
+    <button class="button is-primary" @click="$toast.open('This is a Toast')">
+        Show Toast
+    </button>
+    <button class="button is-primary" @click="$snackbar.open('This is a Snackbar')">
+        Show Snackbar
+    </button>
+    <hr>
+
+    <b-field>
+        <b-input maxlength="25" placeholder="Your name"></b-input>
+    </b-field>
+</div>

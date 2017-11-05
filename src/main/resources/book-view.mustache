@@ -1,0 +1,46 @@
+<html>
+<head lang="en">
+  <meta charset="UTF-8" />
+  <title>Bookstore</title>
+  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-bootstrap/0.31.3/react-bootstrap.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
+</head>
+
+<body>
+<div id="test"></div>
+<script type="text/jsx">
+    const buttonsInstance = (
+            <ReactBootstrap.ButtonToolbar>
+                <ReactBootstrap.Button bsStyle="primary">Primary</ReactBootstrap.Button>
+            </ReactBootstrap.ButtonToolbar>
+    );
+
+    ReactDOM.render(buttonsInstance, document.getElementById("test"));
+</script>
+
+  <h1>List of books</h1>
+      <table border="1">
+        <tr>
+          <th>ISBN</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Date of publication</th>
+          <th>Price</th>
+        </tr>
+        {{#books}}
+         <td>{{isbn}}</td>
+         <td>{{title}}</td>
+         <td>{{description}}</td>
+         <td>{{pubDate}}</td>
+         <td>{{price}}</td>
+        </tr>
+        {{/books}}
+      </table>
+
+</body>
+</html>
